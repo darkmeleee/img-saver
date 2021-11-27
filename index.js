@@ -44,7 +44,7 @@ app.post("/upload", upload.single("file"), (req,res) => {
     const tempPath = req.file.path;
 
     if (path.extname(req.file.originalname).toLowerCase() == ".png" || path.extname(req.file.originalname).toLowerCase() == ".jpg" || path.extname(req.file.originalname).toLowerCase() == ".jpeg") {
-        fs.rename(tempPath, path.join(__dirname, "./tempimg/" + req.file.originalname), err => {
+        fs.rename(tempPath, path.join(__dirname, "./temp/" + req.file.originalname), err => {
             if (err) return res.status(404);
 
             reducesize(req.file.originalname);
